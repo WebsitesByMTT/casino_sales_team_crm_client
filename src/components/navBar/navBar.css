@@ -1,0 +1,15 @@
+.navBarContainer{
+    background-color: rgb(4, 110, 163);
+    margin-top: auto;
+    margin-bottom: auto;
+    color: white;
+    height: 100%;
+    padding: 10px 30px 10px 30px;
+    
+    .navBarItems{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
