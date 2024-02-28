@@ -4,38 +4,20 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Login from './pages/Login/login';
+import TlDashboard from './pages/TL/tl';
 
 
 function App() {
 
   return (
     <>
- <Router>
-      {user.userName &&  <NavBar />}
+      <Router>
+
         <Routes>
-          <Route exact path="/" element={<LogReg />} />
-          <Route exact path="/home" element={<Home />} /> 
+          <Route exact path="/" element={<Login />} />
+          <Route exact path="/tlDashboard" element={<TlDashboard />} />
 
-          //Tic Tac Toe
-          <Route exact path="/TicTacToeSinglePlayer" element={<TicTacToeSinglePlayer/>}/>
-          <Route exact path="/TicTacToeMultiPlayerHome" element={<TicTacToeMultiPlayerHome/>}/>  
-          <Route exact path="/TicTacToeMultiPlayerConfig" element={<TicTacToeMultiPlayerConfig/>}/> 
-
-          //Checker Routes
-          <Route exact path="/CheckerSinglePlayer" element={<CheckerSinglePlayer/>}/>
-          <Route exact path="/CheckersMultiPlayerConfig" element={<CheckersMultiPlayerConfig/>}/>  
-          <Route exact path="/CheckersMultiPlayerHome" element={<CheckersMultiPlayerHome/>}/> 
-          //Chess Routes
-          <Route exact path="/ChessSinglePlayer" element={<CommingSoon/>}/>
-          <Route exact path="/ChessMultiPlayerConfig" element={<CommingSoon/>}/>
-          <Route exact path="/ChessMultiPlayerHome" element={<CommingSoon/>}/>
-
-          //Snake Routes
-          <Route exact path="/SnakeSinglePlayer" element={<CommingSoon/>}/>
-
-          //Forgot Password
-          <Route exact path="/ResetPassword" element={<ForgotPassword/>}/>
- 
 
         </Routes>
       </Router>

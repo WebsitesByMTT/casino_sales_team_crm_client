@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userSlice from './reducers';
 import {
   persistStore,
   persistReducer,
@@ -9,7 +8,8 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';import storage from 'redux-persist/lib/storage';
+} from 'redux-persist'; import storage from 'redux-persist/lib/storage';
+import userSlice from './reducer';
 
 
 const persistConfig = {
@@ -18,17 +18,17 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, userSlice)
+const persistedReducer = persistReducer(persistConfig, userSlice.reducer)
 
 
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
-  getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 
 });
 

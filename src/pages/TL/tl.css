@@ -1,0 +1,45 @@
+.dashboardContainer {
+    width: 100vw;
+    height: 100vh;
+
+    .dashboardContainerTop {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        background-color: rgb(207, 102, 102);
+        color: black;
+        height: 60px;
+        box-shadow: 1px 2px 5px 2px rgb(156, 156, 156)
+        
+    }
+
+    .dashboardContainerBottom {
+        display: flex;
+
+        width: 100%;
+        height: calc(100% - 60px);
+
+        .dashboardContainerBottomLeft {
+            width: 20%;
+            min-width: 150px;
+            max-width: 200px;
+            
+        }
+
+        .dashboardContainerBottomRight {
+            width: 80%;
+            height: 100%;
+            min-width: calc(100% - 200px);
+            max-width:  calc(100% - 150px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            @media (max-width:200px) {
+                
+            }
+        }
+
+    }
+}
