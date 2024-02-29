@@ -25,6 +25,7 @@ const SideBar = () => {
   };
 
   const newEntry = (data) => {
+    console.log(data)
     setIsOpen(false);
     addTlEntry(data)
 

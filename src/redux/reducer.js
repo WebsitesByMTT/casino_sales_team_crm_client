@@ -25,6 +25,7 @@ export const addTlEntry = (data) => async (dispatch, getState) => {
 
   const response = await axios.post(`${baseUrl}/api/tl/tlEntries`, data)
   console.log("loginApiRes", response.data)
+  
   if (response.status == 200)
     return dispatch(setAuthStates(response.data))
 

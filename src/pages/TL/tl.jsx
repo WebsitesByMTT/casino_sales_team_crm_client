@@ -24,12 +24,7 @@ const TlDashboard = () => {
     }
 
     useEffect(() => {
-        // dispatch(setEmployee(sampleDate))
-        // dispatch(addProjects({ name: "form_website", data: initialProjects["form_website"] }))
-
-        // dispatch(addProjectForReports({ name: "form_website", progressList: initialProjectsForReport["form_website"] }))
-        // getPageComponent()
-        checkTokenExist()
+     
 
     }, [])
 
