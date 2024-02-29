@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { baseUrl } from '../api/api';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 const initialState = {
   user: {},
@@ -15,16 +16,19 @@ export const loginUser = (data) => async (dispatch, getState) => {
 
   const response = await axios.post(`${baseUrl}/api/auth/login`, data)
   console.log("loginApiRes", response.data)
-  if (response.status == 200)
+  if (response.status == 200){
+    Cookies.set("userToken",response.data.token)
     return dispatch(setAuthStates(response.data))
+
+  }
 
   else return dispatch(setError(response.data))
 }
 
 export const addTlEntry = (data) => async (dispatch, getState) => {
 
-  const response = await axios.post(`${baseUrl}/api/tl/tlEntries`, data)
-  console.log("loginApiRes", response.data)
+  const useToken = Cookies.get("userToken")
+  const response = await axios.post(`${baseUrl}/api/tl/tlEntries`, {...data,"userToken":useToken})
   
   if (response.status == 200)
     return dispatch(setAuthStates(response.data))

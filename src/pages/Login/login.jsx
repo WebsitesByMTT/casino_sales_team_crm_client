@@ -4,6 +4,7 @@ import './login.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../../redux/reducer'
 import { useNavigate } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 
 const Login = () => {
@@ -23,7 +24,6 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         dispatch(loginUser({ email, password }))
 
     }
@@ -37,6 +37,8 @@ const Login = () => {
         checkTokenExist()
         console.log("loginSotrePrint", storeAuthStates)
         if (storeAuthStates.email && storeAuthStates.token) {
+
+            
             navigate('/tlDashboard/')
         }
 

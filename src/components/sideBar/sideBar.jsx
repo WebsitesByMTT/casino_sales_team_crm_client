@@ -7,6 +7,9 @@ import { addTlEntry } from '../../redux/reducer';
 
 const SideBar = () => {
 
+  const dispatch = useDispatch();
+
+
   const inputModal = [
     'timeStamp',
     'date',
@@ -14,7 +17,7 @@ const SideBar = () => {
     'gameName',
     'amount',
     'accountName',
-    'remarks'
+    'remark'
   ]
 
 
@@ -27,12 +30,11 @@ const SideBar = () => {
   const newEntry = (data) => {
     console.log(data)
     setIsOpen(false);
-    addTlEntry(data)
+    dispatch(addTlEntry(data))
 
   };
 
 
-  const dispatch = useDispatch();
 
   const setPageState = (pageState) => {
     // dispatch(setPageStateStore(pageState))
