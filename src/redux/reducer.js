@@ -16,8 +16,8 @@ export const loginUser = (data) => async (dispatch, getState) => {
 
   const response = await axios.post(`${baseUrl}/api/auth/login`, data)
   console.log("loginApiRes", response.data)
-  if (response.status == 200){
-    Cookies.set("userToken",response.data.token)
+  if (response.status == 200) {
+    Cookies.set("userToken", response.data.token)
     return dispatch(setAuthStates(response.data))
 
   }
@@ -25,13 +25,27 @@ export const loginUser = (data) => async (dispatch, getState) => {
   else return dispatch(setError(response.data))
 }
 
+export const getTlEntries = () => async (dispatch, getState) => {
+
+  const useToken = Cookies.get("userToken")
+  const response = await axios.post(`${baseUrl}/api/tl/gettlEntries`, { "userToken": useToken })
+
+  console.log("setDaata",response.data)
+
+  if (response.status == 200)
+    return dispatch(setData(response.data))
+
+  else return dispatch(setError(response.data))
+}
+
 export const addTlEntry = (data) => async (dispatch, getState) => {
 
   const useToken = Cookies.get("userToken")
-  const response = await axios.post(`${baseUrl}/api/tl/tlEntries`, {...data,"userToken":useToken})
-  
+  const response = await axios.post(`${baseUrl}/api/tl/tlEntries`, { ...data, "userToken": useToken })
+  console.log("setDaata",response.data)
+
   if (response.status == 200)
-    return dispatch(setAuthStates(response.data))
+    return dispatch(setData(response.data))
 
   else return dispatch(setError(response.data))
 }
@@ -50,14 +64,14 @@ const userSlice = createSlice({
       state.user = action.payload;
     },
     setError: (state, action) => {
-      state.user = action.payload;
+      state.error = action.payload;
     },
-    setError: (state, action) => {
+    setData: (state, action) => {
       state.data = action.payload;
     },
   },
 });
 
-export const { setUsers, setAuthStates, setError } = userSlice.actions;
+export const { setUsers, setAuthStates, setError, setData } = userSlice.actions;
 
 export default userSlice;
