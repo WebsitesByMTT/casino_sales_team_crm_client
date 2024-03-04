@@ -1,30 +1,33 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import './tl.css'
+import './balanceSheet.css'
 import { useDispatch, useSelector } from 'react-redux'
-import SideBar from '../../components/sideBar/sideBar'
-import PopModal from '../../components/popModal/popModal'
-import { addTlEntry, getTlEntries } from '../../redux/api/tl'
-import TableBody from '../../components/tableBody/tableBody'
-import NavBar from '../../components/navBar/navBar'
+import SideBar from '../../../components/sideBar/sideBar'
+import PopModal from '../../../components/popModal/popModal'
+import TableBody from '../../../components/tableBody/tableBody'
+import { balanceSheetEntryApi, balanceSheetGetApi } from '../../../redux/api/manager'
+import NavBar from '../../../components/navBar/navBar'
 
 
-const TlDashboard = () => {
+const BalanceSheet = () => {
 
-    const data = useSelector(state => state.data);
+    const data = useSelector(state => state.data);    
 
 
     const inputModal = {
-        'timeStamp': "Time Stamp",
-        'date': "Date",
-        'customerName': "Customer Name",
-        'gameName': "Game Name",
-        'amount': "Amount",
-        'accountName': "Account Name",
-        'remark': "Remarks"
+        'employeeName': "Employee Name",
+        'designation': "Designation",
+        'employeeEmail': "Employee Email",
+        'salary': "Salary",
+        'incentive': "Incentive",
+        'totalSalary': " Total Salary",
+        'review': "Review"
     }
 
     const sideBarMenu = {
+        '/acountRecords': "Account Records",
+        '/balanceSheet': "Balance Sheet",
+        '/coinSheet': "Coin Sheet"
 
     }
 
@@ -42,11 +45,11 @@ const TlDashboard = () => {
 
     const newEntry = (data) => {
         setIsOpen(false);
-        dispatch(addTlEntry(data))
+        dispatch(balanceSheetEntryApi(data))
     };
 
     useEffect(() => {
-        dispatch(getTlEntries())
+        dispatch(balanceSheetGetApi())
     }, [])
 
     return (
@@ -62,6 +65,7 @@ const TlDashboard = () => {
                     <div className='dashboardContainerBottomRight'>
 
 
+
                         <TableBody tableHeaders={inputModal} data={data} />
 
                     </div>
@@ -71,4 +75,4 @@ const TlDashboard = () => {
     )
 
 }
-export default TlDashboard
+export default BalanceSheet

@@ -1,35 +1,40 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import './tl.css'
+import './freshMessage.css'
 import { useDispatch, useSelector } from 'react-redux'
-import SideBar from '../../components/sideBar/sideBar'
-import PopModal from '../../components/popModal/popModal'
-import { addTlEntry, getTlEntries } from '../../redux/api/tl'
-import TableBody from '../../components/tableBody/tableBody'
-import NavBar from '../../components/navBar/navBar'
+import SideBar from '../../../components/sideBar/sideBar'
+import PopModal from '../../../components/popModal/popModal'
+import TableBody from '../../../components/tableBody/tableBody'
+import { freshMessageEntryApi, freshMessageGetApi } from '../../../redux/api/agent'
+import NavBar from '../../../components/navBar/navBar'
 
 
-const TlDashboard = () => {
+const FreshMessage = () => {
+
 
     const data = useSelector(state => state.data);
 
 
     const inputModal = {
-        'timeStamp': "Time Stamp",
+        'agentName': "Agent Name",
+        'time': "Time Stamp",
         'date': "Date",
-        'customerName': "Customer Name",
-        'gameName': "Game Name",
-        'amount': "Amount",
-        'accountName': "Account Name",
-        'remark': "Remarks"
+        'systemNumber': "Game Name",
+        'accountName': " Account Name",
+        'recieverId': "Player ID/Reciever Facebook ID",
+        'remark': "Remark"
     }
 
     const sideBarMenu = {
+        '/firstDepositeEntry': "First Deposite Entry",
+        '/freshMessage': "Fresh Message",
+        '/freeToPlay': "Free To Play"
 
     }
 
     console.log("daata", data)
     const dispatch = useDispatch()
+    const [pageBody, setPageBody] = useState(null)
     const [isOpen, setIsOpen] = useState(false);
 
     const closeModal = () => {
@@ -42,11 +47,11 @@ const TlDashboard = () => {
 
     const newEntry = (data) => {
         setIsOpen(false);
-        dispatch(addTlEntry(data))
+        dispatch(freshMessageEntryApi(data))
     };
 
     useEffect(() => {
-        dispatch(getTlEntries())
+        dispatch(freshMessageGetApi())
     }, [])
 
     return (
@@ -70,5 +75,6 @@ const TlDashboard = () => {
         </>
     )
 
+
 }
-export default TlDashboard
+export default FreshMessage

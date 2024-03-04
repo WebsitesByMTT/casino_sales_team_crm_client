@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import './login.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../../redux/reducer'
 import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
+import { loginUser } from '../../redux/api/login'
 
 
 const Login = () => {
@@ -38,19 +38,11 @@ const Login = () => {
         console.log("loginSotrePrint", storeAuthStates)
         if (storeAuthStates.email && storeAuthStates.token) {
 
-            
-            navigate('/tlDashboard/')
+
+            navigate('/acountRecords')
         }
 
     }, [storeAuthStates])
-
-    // useEffect(() => {
-    //     checkTokenExist()
-    //     console.log("loginSotrePrint", storeAuthStates)
-    //     if (storeAuthStates.email && storeAuthStates.token)
-    //         router.push(`/pages/dashboard`)
-
-    // }, [])
 
     return (
         <>

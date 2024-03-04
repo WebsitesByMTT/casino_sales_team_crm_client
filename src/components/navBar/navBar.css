@@ -1,15 +1,28 @@
-.navBarContainer{
-    background-color: rgb(4, 110, 163);
-    margin-top: auto;
-    margin-bottom: auto;
-    color: white;
-    height: 100%;
-    padding: 10px 30px 10px 30px;
-    
-    .navBarItems{
-        height: 100%;
+.navBarContainer {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .bigBossContainer {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        gap: 20px;
+        padding: 30px;
+
+        &>div {
+            border: 2px solid red;
+            padding: 10px 20px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .addEmployee{
+        margin-left: 30px;
+        background-color: rgb(43, 43, 225);
+        &:hover{
+            cursor: pointer;
+        }
     }
 }

@@ -1,21 +1,19 @@
 "use client"
-import { employeeData as sampleData } from '@/employeeData'
 import React, { useEffect, useState } from 'react'
 import './addEmployeeDetails.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { addEmployee } from '@/app/redux/reducers/employeeReducers'
 
 
-const AddEmployeeDetails = ({ modalPopUpStatus }) => {
-
+const AddEmployeeDetails = ({ closeModal }) => {
 
     const emptyDetails = {
         userName: "",
-        phoneNumber: "",
-        salary:'',
+        password: "",
+        email:'',
+        isActive:"",
+        phoneNumber:"",
         address:"",
-        role:"",
-        email:""
+        designation:""
     };
 
     const dispatch = useDispatch()
@@ -38,12 +36,12 @@ const AddEmployeeDetails = ({ modalPopUpStatus }) => {
     }
 
     return (
-        <div className='addmployeeContainer'>
-            <div className="modal-overlay">
+       
+            <div className="modal">
                 <div className="modal-content">
                     <div
                         className="closeButton"
-                        onClick={handelCloseButtonClick}
+                        onClick={closeModal}
                     >
                         &times;
                     </div>
@@ -145,7 +143,6 @@ const AddEmployeeDetails = ({ modalPopUpStatus }) => {
                 </div>
             </div>
 
-        </div>
     )
 }
 

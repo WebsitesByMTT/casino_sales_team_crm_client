@@ -1,30 +1,32 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import './tl.css'
+import './accountRecords.css'
 import { useDispatch, useSelector } from 'react-redux'
-import SideBar from '../../components/sideBar/sideBar'
-import PopModal from '../../components/popModal/popModal'
-import { addTlEntry, getTlEntries } from '../../redux/api/tl'
-import TableBody from '../../components/tableBody/tableBody'
-import NavBar from '../../components/navBar/navBar'
+import SideBar from '../../../components/sideBar/sideBar'
+import PopModal from '../../../components/popModal/popModal'
+import TableBody from '../../../components/tableBody/tableBody'
+import { accountRecordEntryApi, accountRecordsGetApi } from '../../../redux/api/manager'
+import BigBoss from '../../../components/navBar/navBar'
+import NavBar from '../../../components/navBar/navBar'
 
 
-const TlDashboard = () => {
+const AccountRecords = () => {
 
     const data = useSelector(state => state.data);
 
-
     const inputModal = {
-        'timeStamp': "Time Stamp",
-        'date': "Date",
-        'customerName': "Customer Name",
-        'gameName': "Game Name",
-        'amount': "Amount",
-        'accountName': "Account Name",
-        'remark': "Remarks"
+
+        'userName': "User Name",
+        'password': "Password",
+        'status': " Status",
+        'fbAccountLink': "Player ID/Reciever Facebook ID",
+        'agentNameOfFbAccount': "Agent Name of Fb Account"
     }
 
     const sideBarMenu = {
+        '/acountRecords': "Account Records",
+        '/balanceSheet': "Balance Sheet",
+        '/coinSheet': "Coin Sheet"
 
     }
 
@@ -42,24 +44,28 @@ const TlDashboard = () => {
 
     const newEntry = (data) => {
         setIsOpen(false);
-        dispatch(addTlEntry(data))
+        dispatch(accountRecordEntryApi(data))
     };
 
     useEffect(() => {
-        dispatch(getTlEntries())
+        dispatch(accountRecordsGetApi())
     }, [])
 
     return (
         <>
             <div className='dashboardContainer'>
+
                 <NavBar/>
+
                 <div className='dashboardContainerBottom'>
                     <div className='dashboardContainerBottomLeft'>
                         <SideBar sideBarMenu={sideBarMenu} openModalCallBack={openModalCallBack} />
                     </div>
 
                     {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} />}
+
                     <div className='dashboardContainerBottomRight'>
+
 
 
                         <TableBody tableHeaders={inputModal} data={data} />
@@ -70,5 +76,6 @@ const TlDashboard = () => {
         </>
     )
 
+
 }
-export default TlDashboard
+export default AccountRecords

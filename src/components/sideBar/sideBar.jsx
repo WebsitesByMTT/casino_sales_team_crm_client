@@ -1,53 +1,42 @@
 import React, { useState } from 'react'
 import './sideBar.css'
-import { useDispatch } from 'react-redux'
-import PopModal from '../popModal/popModal';
-import { addTlEntry } from '../../redux/reducer';
+import { useNavigate } from 'react-router-dom';
 
 
-const SideBar = () => {
+const SideBar = ({ sideBarMenu, openModalCallBack }) => {
 
-  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
+  console.log("sideMenu", sideBarMenu)
 
-  const inputModal = [
-    'timeStamp',
-    'date',
-    'customerName',
-    'gameName',
-    'amount',
-    'accountName',
-    'remark'
-  ]
+  const openModal = () => {
 
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  const newEntry = (data) => {
-    console.log(data)
-    setIsOpen(false);
-    dispatch(addTlEntry(data))
+    openModalCallBack()
 
   };
 
+  const navigateToPage = (navigateValue) => {
+    console.log("navigatePage", navigateValue)
+    
+    navigate(navigateValue)
+  };
 
 
-  const setPageState = (pageState) => {
-    // dispatch(setPageStateStore(pageState))
-  }
 
   return (
     <div className='sideBarContainer'>
       <div className='sideBarContainerList'>
         <div onClick={() => setPageState("employeDetails")}>Sales Crm</div>
 
-        <div onClick={() => setIsOpen(true)}>New Entry</div>
+        {
+          sideBarMenu && Object.keys(sideBarMenu).map(key => {
 
-        {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} />}
+            return <div onClick={() => navigateToPage(key)}>{sideBarMenu[key]}</div>
+
+          })
+        }
+
+        <div onClick={() => openModal()}>New Entry</div>
       </div>
     </div>
   )

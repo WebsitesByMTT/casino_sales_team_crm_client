@@ -31,17 +31,17 @@ const PopModal = ({ closeModal, inputModal, newEntry }) => {
                 </span>
                 <div className="table-container">
                     <div className="table-header">
-                        {inputModal && inputModal?.map((header, index) => (
-                            <div key={index} className="header-item">
-                                {header}
+                        {inputModal && Object.keys(inputModal)?.map(key => (
+                            <div key={key} className="header-item">
+                                {inputModal[key]}
                             </div>
                         ))}
                     </div>
 
                     <div className="table-row">
-                        {inputModal && inputModal?.map((item, index) => (
-                            <div key={index} className="row-item">
-                                <input placeholder={item} value={inputs.item} onChange={(e) => setDetails(item, e.target.value)} />
+                        {inputModal && Object.keys(inputModal)?.map(keys => (
+                            <div key={keys} className="row-item">
+                                <input placeholder={keys} value={inputs.item} onChange={(e) => setDetails(keys, e.target.value)} />
                             </div>
                         ))}
                     </div>

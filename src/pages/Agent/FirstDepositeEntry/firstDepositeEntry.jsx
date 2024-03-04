@@ -1,31 +1,33 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import './tl.css'
+import './firstDepositeEntry.css'
 import { useDispatch, useSelector } from 'react-redux'
-import SideBar from '../../components/sideBar/sideBar'
-import PopModal from '../../components/popModal/popModal'
-import { addTlEntry, getTlEntries } from '../../redux/api/tl'
-import TableBody from '../../components/tableBody/tableBody'
-import NavBar from '../../components/navBar/navBar'
+import SideBar from '../../../components/sideBar/sideBar'
+import PopModal from '../../../components/popModal/popModal'
+import TableBody from '../../../components/tableBody/tableBody'
+import { firstDepositeEntryApi, firstDepositeGetApi } from '../../../redux/api/agent'
+import NavBar from '../../../components/navBar/navBar'
 
 
-const TlDashboard = () => {
+const FirstDepositeEntry = () => {
 
     const data = useSelector(state => state.data);
 
 
     const inputModal = {
-        'timeStamp': "Time Stamp",
+        'agentName': "Agent Name",
         'date': "Date",
-        'customerName': "Customer Name",
+        'customerName': "Customer Name/ FB ID",
         'gameName': "Game Name",
-        'amount': "Amount",
-        'accountName': "Account Name",
-        'remark': "Remarks"
+        'amountOfCoin': "Amount of Coins",
+        'accountName': " Account Name",
+        'remark': "Remark"
     }
 
     const sideBarMenu = {
-
+        '/firstDepositeEntry': "First Deposite Entry",
+        '/freshMessage': "Fresh Message",
+        '/freeToPlay': "Free To Play"
     }
 
     console.log("daata", data)
@@ -42,11 +44,11 @@ const TlDashboard = () => {
 
     const newEntry = (data) => {
         setIsOpen(false);
-        dispatch(addTlEntry(data))
+        dispatch(firstDepositeEntryApi(data))
     };
 
     useEffect(() => {
-        dispatch(getTlEntries())
+        dispatch(firstDepositeGetApi())
     }, [])
 
     return (
@@ -71,4 +73,4 @@ const TlDashboard = () => {
     )
 
 }
-export default TlDashboard
+export default FirstDepositeEntry
