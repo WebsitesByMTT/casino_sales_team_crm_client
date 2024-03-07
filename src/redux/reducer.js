@@ -9,7 +9,7 @@ const initialState = {
   email: "",
   error: "",
   data: [],
-  isBigBoss:true
+  isBigBoss:false
 };
 
 
@@ -32,9 +32,13 @@ const userSlice = createSlice({
     setData: (state, action) => {
       state.data = action.payload;
     },
+    isBigBoss: (state, action) => {
+      if(action.payload.designation==="bigboss")
+          state.isBigBoss = true ;
+    },
   },
 });
 
-export const { setUsers, setAuthStates, setError, setData } = userSlice.actions;
+export const { setUsers, setAuthStates, setError, isBigBoss,setData } = userSlice.actions;
 
 export default userSlice;

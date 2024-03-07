@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import './freshMessage.css'
 import { useDispatch, useSelector } from 'react-redux'
 import SideBar from '../../../components/sideBar/sideBar'
 import PopModal from '../../../components/popModal/popModal'
@@ -57,7 +56,10 @@ const FreshMessage = () => {
     return (
         <>
             <div className='dashboardContainer'>
+            <div className='dashboardContainerTop'>
                 <NavBar/>
+
+                </div>
                 <div className='dashboardContainerBottom'>
                     <div className='dashboardContainerBottomLeft'>
                         <SideBar sideBarMenu={sideBarMenu} openModalCallBack={openModalCallBack} />

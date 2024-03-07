@@ -2,7 +2,6 @@
 
 import SideBar from '@/app/components/sideBar/sideBar'
 import React, { useEffect, useState } from 'react'
-import './dashboardPage.css'
 import NavBar from '@/app/components/navBar/navBar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPageComponentController } from '@/app/components/controllers'

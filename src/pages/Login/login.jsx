@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import { loginUser } from '../../redux/api/login'
-
+import PersonIcon from '@mui/icons-material/Person';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 const Login = () => {
 
@@ -47,16 +48,16 @@ const Login = () => {
     return (
         <>
             <div className='loginPage'>
-                <form className='loginForm' onSubmit={(e) => handleSubmit(e)}>
-                    {/* <PersonIcon style={{ fontSize: "150px", color: "white" }} /> */}
 
+                <form className='loginForm' onSubmit={(e) => handleSubmit(e)}>
+                    <div className='loginTitle'>Login</div>
                     <div className='userLoginFields'>
-                        {/* <PersonIcon /> */}
-                        <input required value={email} className="loginInput" type='text' placeholder='Email' onChange={(e) => setEmail(e.target.value.trim())} />
+                        <PersonIcon style={{ fontSize: "15px", color: "black" }} />
+                        <input className="loginInput" required value={email}  type='text' placeholder='Email' onChange={(e) => setEmail(e.target.value.trim())} />
                     </div>
                     <div className='userLoginFields'>
-                        {/* <KeyIcon /> */}
-                        <input required value={password} type='password' className="loginInput" placeholder='Password' onChange={(e) => setPassword(e.target.value.trim())} />
+                        <LockOpenIcon style={{ fontSize: "15px", color: "black" }} />
+                        <input className="loginInput" required value={password} type='password'  placeholder='Password' onChange={(e) => setPassword(e.target.value.trim())} />
                     </div>
 
                     <br />

@@ -1,13 +1,12 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import './firstDepositeEntry.css'
 import { useDispatch, useSelector } from 'react-redux'
 import SideBar from '../../../components/sideBar/sideBar'
 import PopModal from '../../../components/popModal/popModal'
 import TableBody from '../../../components/tableBody/tableBody'
 import { firstDepositeEntryApi, firstDepositeGetApi } from '../../../redux/api/agent'
 import NavBar from '../../../components/navBar/navBar'
-
+import CircleIcon from '@mui/icons-material/Circle';
 
 const FirstDepositeEntry = () => {
 
@@ -54,7 +53,10 @@ const FirstDepositeEntry = () => {
     return (
         <>
             <div className='dashboardContainer'>
+            <div className='dashboardContainerTop'>
                 <NavBar/>
+
+                </div>
                 <div className='dashboardContainerBottom'>
                     <div className='dashboardContainerBottomLeft'>
                         <SideBar sideBarMenu={sideBarMenu} openModalCallBack={openModalCallBack} />

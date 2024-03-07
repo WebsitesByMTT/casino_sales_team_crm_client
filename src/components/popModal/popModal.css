@@ -9,85 +9,57 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
 
-.modal-content {
-    width: fit-content;
-    height: fit-content;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    position: relative;
-    background-color: rgb(79, 79, 79);
-}
-
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.gameMode {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-
-    &>div {
-        width: 80%;
-        text-align: center;
-        background-color: #026ab0;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
+    .modal-content {
+        width: fit-content;
+        height: fit-content;
+        background-color: #fff;
+        padding: 20px;
         border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        position: relative;
+        background-color: rgb(79, 79, 79);
 
-        &:hover {
-            background-color: blue;
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .table-container {
+            max-width: 800px;
+            margin: auto;
+
+            .table-header {
+                border: solid 1px #4d86db;
+                border-radius: 10px;
+                display: flex;
+                padding: 5px 10px;
+
+                .header-item {
+                    padding: 10px;
+                    border-left: solid 1px #4d86db;
+
+                }
+            }
+        }
+
+        .table-row {
+            display: flex;
+
+            .row-item {
+                width: 100px;
+            }
+        }
+
+        .close-button {
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+            padding: 10px;
+            border: none;
         }
     }
-}
-
-.table-container {
-    max-width: 800px;
-    margin: auto;
-}
-
-.table-header {
-
-    border: solid 1px #4d86db;
-    border-radius: 10px;
-    display: flex;
-    padding: 5px 10px;
-
-}
-
-.table-row {
-    display: flex;
-}
-
-.header-item{
-    padding: 10px;
-    border-left: solid 1px #4d86db;
-
-}
-.row-item {
-    width: 100px;
-}
-
-.close-button {
-    background-color: red;
-    color: white;
-    border-radius: 5px;
-    padding: 10px;
-    border: none;
 }

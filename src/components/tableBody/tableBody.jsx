@@ -1,23 +1,25 @@
 import React from 'react'
+import './tableBody.css'
 
 const TableBody = ({ tableHeaders, data }) => {
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
+    <div className='tableContainer'>
+      <table className='table'>
+
+        <thead className='tableHeader'>
+          <tr className='tableRowHeader'>
             {Object.keys(tableHeaders)?.map(keys => {
-              return <th>{tableHeaders[keys]}</th>
+              return <th className='tableCellHeader'>{tableHeaders[keys]}</th>
             })}
           </tr>
         </thead>
-        <tbody>
+        <tbody className='tableBody'>
           {data && data.map((item) => {
-            return (<tr>
+            return (<tr className='tableRowBody'>
               {
                 Object.keys(tableHeaders).map(keys => {
-                  return <td className='tableCell'>{item[keys]}</td>
+                  return <td className='tableCellBody'>{item[keys]}</td>
                 })
               }
 
