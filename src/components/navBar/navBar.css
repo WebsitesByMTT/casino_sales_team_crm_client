@@ -1,4 +1,4 @@
-.navBarContainer {    
+.navBarContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,9 +9,9 @@
         display: flex;
         gap: 20px;
         align-items: center;
-        
 
-        .navButtons{
+
+        .navButtons {
 
             background-color: rgb(155, 132, 0);
             padding: 5px;
@@ -28,26 +28,50 @@
             }
         }
 
-     
+
     }
 
-    .addEmployee{
+    .addEmployee {
         margin-left: 30px;
         background-color: rgb(35, 116, 35);
         padding: 5px;
         border-radius: 5px;
 
-        &:hover{
+        &:hover {
             cursor: pointer;
             background-color: rgb(13, 190, 13);
         }
     }
 
-    .accountInfo{
+    .rightBox {
         position: absolute;
         right: 10px;
-        display: flex;        
+        display: flex;
         align-items: center;
+        justify-content: center;
         color: white;
+        gap: 20px;
+
+        .accountInfo {
+
+            display: flex;
+            align-items: center;
+            color: white;
+
+        }
+
+        .logOut {
+
+            display: flex;
+            background-color: red;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: brown;
+            }
+
+        }
     }
 }

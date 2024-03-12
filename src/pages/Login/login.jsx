@@ -38,8 +38,6 @@ const Login = () => {
         checkTokenExist()
         console.log("loginSotrePrint", storeAuthStates)
         if (storeAuthStates.email && storeAuthStates.token) {
-
-
             navigate('/acountRecords')
         }
 
@@ -53,11 +51,11 @@ const Login = () => {
                     <div className='loginTitle'>Login</div>
                     <div className='userLoginFields'>
                         <PersonIcon style={{ fontSize: "15px", color: "black" }} />
-                        <input className="loginInput" required value={email}  type='text' placeholder='Email' onChange={(e) => setEmail(e.target.value.trim())} />
+                        <input className="loginInput" required value={email} type='text' placeholder='Email' onChange={(e) => setEmail(e.target.value.trim())} />
                     </div>
                     <div className='userLoginFields'>
                         <LockOpenIcon style={{ fontSize: "15px", color: "black" }} />
-                        <input className="loginInput" required value={password} type='password'  placeholder='Password' onChange={(e) => setPassword(e.target.value.trim())} />
+                        <input className="loginInput" required value={password} type='password' placeholder='Password' onChange={(e) => setPassword(e.target.value.trim())} />
                     </div>
 
                     <br />

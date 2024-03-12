@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import './navBar.css'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import AddEmployeeDetails from '../addEmployee/addEmployeeDetails'
 import PersonIcon from '@mui/icons-material/Person';
+import Cookies from 'js-cookie'
+import { eraseData } from '../../redux/reducer'
+
 
 const NavBar = () => {
+
+    const dispatch = useDispatch()
 
     const navigate = useNavigate()
     const isBigBoss = useSelector(state => state.isBigBoss);
@@ -20,6 +25,20 @@ const NavBar = () => {
         setIsModalOpen(false)
     }
 
+    const logOut=()=>{
+        
+        dispatch(eraseData())
+        Cookies.remove("userToken")
+        navigate('/')
+
+    }
+
+    useEffect(()=>{
+        
+        
+
+    },[])
+
     return (
         <div className="navBarContainer">
 
@@ -27,7 +46,7 @@ const NavBar = () => {
                 isBigBoss &&
                 <div className='bigBossContainer'>
                     <div className='navButtons' onClick={() => navigate('/acountRecords')}> Manager </div>
-                    <div  className='navButtons'  onClick={() => navigate('/firstDepositeEntry')}>Agent</div>
+                    <div className='navButtons' onClick={() => navigate('/firstDepositeEntry')}>Agent</div>
                     <div className='navButtons' onClick={() => navigate('/tlDashboard')}>TL</div>
                 </div>
             }
@@ -39,7 +58,10 @@ const NavBar = () => {
 
             {isModalOpen && <AddEmployeeDetails closeModal={closeModal} />}
 
-            <div className='accountInfo'><PersonIcon/> :  {account}</div>
+            <div className='rightBox'>
+                <div className='accountInfo'><PersonIcon /> :  {account}</div>
+                <div className='logOut' onClick={()=>logOut()}>LogOut</div>
+            </div>
 
         </div>
     )

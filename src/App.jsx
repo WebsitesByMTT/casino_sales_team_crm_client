@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <Router>
-
+        
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/tlDashboard" element={<TlDashboard />} />
@@ -31,7 +31,6 @@ function App() {
           <Route exact path="/acountRecords" element={<AccountRecords />} />
           <Route exact path="/balanceSheet" element={<BalanceSheet />} />
           <Route exact path="/coinSheet" element={<CoinSheet />} />
-
 
         </Routes>
       </Router>
