@@ -37,8 +37,19 @@ const Login = () => {
     useEffect(() => {
         checkTokenExist()
         console.log("loginSotrePrint", storeAuthStates)
+
         if (storeAuthStates.email && storeAuthStates.token) {
-            navigate('/acountRecords')
+            if (storeAuthStates.designation === "bigboss")
+                navigate('/acountRecords')
+
+            else if (storeAuthStates.designation === "managerSchema")
+                navigate('/acountRecords')
+
+            else if (storeAuthStates.designation === "agentSchema")
+                navigate('/firstDepositeEntry')
+
+            else if (storeAuthStates.designation === "tlSchema")
+                navigate('/tlDashboard')
         }
 
     }, [storeAuthStates])

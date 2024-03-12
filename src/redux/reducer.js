@@ -9,6 +9,7 @@ const initialState = {
   email: "",
   error: "",
   data: [],
+  designation:"",
   isBigBoss: false
 };
 
@@ -22,6 +23,7 @@ const userSlice = createSlice({
       state.user = action.payload;
       state.token = action.payload.token;
       state.email = action.payload.email
+      state.designation = action.payload.designation
     },
     setAuthStates: (state, action) => {
       state.user = action.payload;
