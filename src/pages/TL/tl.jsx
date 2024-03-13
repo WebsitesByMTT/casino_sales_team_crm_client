@@ -14,6 +14,16 @@ const TlDashboard = () => {
 
 
     const inputModal = {
+        
+        'customerName': "Customer Name",
+        'gameName': "Game Name",
+        'amount': "Amount",
+        'accountName': "Account Name",
+        'remark': "Remarks"
+    }
+
+
+    const tableModal = {
         'timeStamp': "Time Stamp",
         'date': "Date",
         'customerName': "Customer Name",
@@ -64,7 +74,7 @@ const TlDashboard = () => {
                     <div className='dashboardContainerBottomRight'>
 
 
-                        <TableBody tableHeaders={inputModal} data={data} />
+                        <TableBody tableHeaders={tableModal} data={data} />
 
                     </div>
                 </div>

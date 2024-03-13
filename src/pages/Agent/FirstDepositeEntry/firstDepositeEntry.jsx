@@ -15,6 +15,16 @@ const FirstDepositeEntry = () => {
 
     const inputModal = {
         'agentName': "Agent Name",
+      
+        'customerName': "Customer Name/ FB ID",
+        'gameName': "Game Name",
+        'amountOfCoin': "Amount of Coins",
+        'accountName': " Account Name",
+        'remark': "Remark"
+    }
+
+    const tableModal = {
+        'agentName': "Agent Name",
         'date': "Date",
         'customerName': "Customer Name/ FB ID",
         'gameName': "Game Name",
@@ -22,6 +32,8 @@ const FirstDepositeEntry = () => {
         'accountName': " Account Name",
         'remark': "Remark"
     }
+
+
 
     const sideBarMenu = {
         '/firstDepositeEntry': "First Deposite Entry",
@@ -66,7 +78,7 @@ const FirstDepositeEntry = () => {
                     <div className='dashboardContainerBottomRight'>
 
 
-                        <TableBody tableHeaders={inputModal} data={data} />
+                        <TableBody tableHeaders={tableModal} data={data} />
 
                     </div>
                 </div>

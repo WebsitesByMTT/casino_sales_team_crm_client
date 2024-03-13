@@ -15,6 +15,15 @@ const FreeToPlay = () => {
 
     const inputModal = {
         'agentName': "Agent Name",
+        
+        'systemNumber': "Game Name",
+        'accountName': " Account Name",
+        'recieverId': "Player ID/Reciever Facebook ID",
+        'remark': "Remark"
+    }
+
+    const tableModal = {
+        'agentName': "Agent Name",
         'time': "Time Stamp",
         'date': "Date",
         'systemNumber': "Game Name",
@@ -69,7 +78,7 @@ const FreeToPlay = () => {
 
 
 
-                    <TableBody tableHeaders={inputModal} data={data} />
+                    <TableBody tableHeaders={tableModal} data={data} />
 
                     </div>
                 </div>

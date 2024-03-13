@@ -2,6 +2,7 @@ import axios from "axios"
 import { setData, setError } from "../reducer"
 import { baseUrl } from "../../api/api"
 import Cookies from "js-cookie"
+import { getDateStamp, getTimeStamp } from "../../utils/getDateTime"
 
 
 
@@ -21,7 +22,7 @@ export const getTlEntries = () => async (dispatch, getState) => {
 export const addTlEntry = (data) => async (dispatch, getState) => {
 
     const useToken = Cookies.get("userToken")
-    const response = await axios.post(`${baseUrl}/api/tl/tlEntries`, { ...data, "userToken": useToken })
+    const response = await axios.post(`${baseUrl}/api/tl/tlEntries`, { ...data, 'timeStamp': getTimeStamp(), 'date': getDateStamp(), "userToken": useToken })
     console.log("setDaata", response.data)
 
     if (response.status == 200)
