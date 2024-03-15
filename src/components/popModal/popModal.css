@@ -29,28 +29,28 @@
         }
 
         .table-container {
-            max-width: 800px;
-            margin: auto;
+            /* max-width: 800px;
+            margin: auto; */
 
             .table-header {
-                border: solid 1px #4d86db;
+                /* border: solid 1px #4d86db;
                 border-radius: 10px;
                 display: flex;
-                padding: 5px 10px;
+                padding: 5px 10px; */
 
                 .header-item {
-                    padding: 10px;
-                    border-left: solid 1px #4d86db;
+                    /* padding: 10px;
+                    border-left: solid 1px #4d86db; */
 
                 }
             }
         }
 
         .table-row {
-            display: flex;
+            /* display: flex; */
 
             .row-item {
-                width: 100px;
+                /* width: 100px; */
             }
         }
 

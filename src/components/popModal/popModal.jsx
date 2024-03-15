@@ -48,24 +48,29 @@ const PopModal = ({ closeModal, inputModal, newEntry, validations }) => {
                 <span className="close" onClick={closePopModal}>
                     &times;
                 </span>
-                <div className="table-container">
-                    <div className="table-header">
-                        {inputModal && Object.keys(inputModal)?.map(key => (
-                            <div key={key} className="header-item">
-                                {inputModal[key]}
-                            </div>
-                        ))}
-                    </div>
+                <table className="table-container">
+                    <thead className="table-header">
 
-                    <div className="table-row">
-                        {inputModal && Object.keys(inputModal)?.map(keys => (
-                            <div key={keys} className="row-item">
-                                <input placeholder={keys} value={inputs.item} onChange={(e) => setDetails(keys, e.target.value)} />
-                            </div>
-                        ))}
-                    </div>
+                        <tr>
+                            {inputModal && Object.keys(inputModal)?.map(key => (
+                                <th key={key} className="header-item">
+                                    {inputModal[key]}
+                                </th>
+                            ))}
+                        </tr>
+                    </thead>
+
+                    <tbody className="table-row">
+                        <tr>
+                            {inputModal && Object.keys(inputModal)?.map(keys => (
+                                <td key={keys} className="row-item">
+                                    <input placeholder={keys} value={inputs.item} onChange={(e) => setDetails(keys, e.target.value)} />
+                                </td>
+                            ))}
+                        </tr>
+                    </tbody>
                     <button className="button" onClick={() => returnEntry()}>Add</button>
-                </div>
+                </table>
             </div>
         </div>
     )
