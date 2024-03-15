@@ -22,6 +22,9 @@ const FreeToPlay = () => {
         'remark': "Remark"
     }
 
+    const validations = []
+
+
     const tableModal = {
         'agentName': "Agent Name",
         'time': "Time Stamp",
@@ -73,7 +76,7 @@ const FreeToPlay = () => {
                         <SideBar sideBarMenu={sideBarMenu} openModalCallBack={openModalCallBack} />
                     </div>
 
-                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} />}
+                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal}  validations={validations} />}
                     <div className='dashboardContainerBottomRight'>
 
 

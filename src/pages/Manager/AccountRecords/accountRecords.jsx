@@ -7,6 +7,7 @@ import TableBody from '../../../components/tableBody/tableBody'
 import { accountRecordEntryApi, accountRecordsGetApi } from '../../../redux/api/manager'
 import BigBoss from '../../../components/navBar/navBar'
 import NavBar from '../../../components/navBar/navBar'
+import ProgressReports from '../../../components/ProgressReport/progressReport'
 
 
 const AccountRecords = () => {
@@ -21,6 +22,20 @@ const AccountRecords = () => {
         'fbAccountLink': "Player ID/Reciever Facebook ID",
         'agentNameOfFbAccount': "Agent Name of Fb Account"
     }
+
+    const tableHeaders = {
+        'date':"Date",
+        'userName': "User Name",
+        'password': "Password",
+        'status': " Status",
+        'fbAccountLink': "Player ID/Reciever Facebook ID",
+        'agentNameOfFbAccount': "Agent Name of Fb Account"
+    }
+
+    const validations = []
+
+    const xAxis ='date'
+    const yAxis =['']
 
     const sideBarMenu = {
         '/acountRecords': "Account Records",
@@ -63,13 +78,12 @@ const AccountRecords = () => {
                         <SideBar sideBarMenu={sideBarMenu} openModalCallBack={openModalCallBack} />
                     </div>
 
-                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} />}
+                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal}  validations={validations} />}
 
                     <div className='dashboardContainerBottomRight'>
 
 
-
-                        <TableBody tableHeaders={inputModal} data={data} />
+                        <TableBody tableHeaders={tableHeaders} data={data} />
 
                     </div>
                 </div>

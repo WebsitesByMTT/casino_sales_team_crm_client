@@ -2,11 +2,13 @@ import axios from "axios"
 import { setData, setError } from "../reducer"
 import { baseUrl } from "../../api/api"
 import Cookies from "js-cookie"
+import { getDateStamp } from "../../utils/getDateTime"
+
 
 export const accountRecordEntryApi = (data) => async (dispatch, getState) => {
 
     const useToken = Cookies.get("userToken")
-    const response = await axios.post(`${baseUrl}/api/manager/accountRecords`, { ...data, "userToken": useToken })
+    const response = await axios.post(`${baseUrl}/api/manager/accountRecords`, { ...data,  'date': getDateStamp(),"userToken": useToken })
 
     console.log("setDaata", response.data)
 
@@ -32,7 +34,7 @@ export const accountRecordsGetApi = () => async (dispatch, getState) => {
 export const balanceSheetEntryApi = (data) => async (dispatch, getState) => {
 
     const useToken = Cookies.get("userToken")
-    const response = await axios.post(`${baseUrl}/api/manager/balanceSheet`, { ...data, "userToken": useToken })
+    const response = await axios.post(`${baseUrl}/api/manager/balanceSheet`, { ...data, 'date': getDateStamp(), "userToken": useToken })
     console.log("setDaata", response.data)
 
     if (response.status == 200)
@@ -56,7 +58,7 @@ export const balanceSheetGetApi = () => async (dispatch, getState) => {
 export const coinSheetEntryApi = (data) => async (dispatch, getState) => {
 
     const useToken = Cookies.get("userToken")
-    const response = await axios.post(`${baseUrl}/api/manager/coinSheet`, { ...data, "userToken": useToken })
+    const response = await axios.post(`${baseUrl}/api/manager/coinSheet`, { ...data, 'date': getDateStamp(), "userToken": useToken })
     console.log("setDaata", response.data)
 
     if (response.status == 200)

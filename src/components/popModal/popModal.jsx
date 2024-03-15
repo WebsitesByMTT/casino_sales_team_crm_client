@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import './popModal.css'
 
-const PopModal = ({ closeModal, inputModal, newEntry }) => {
+const PopModal = ({ closeModal, inputModal, newEntry, validations }) => {
+
+    console.log("valds", validations)
 
     const [inputs, setInputs] = useState({})
+
 
     const setDetails = (key, val) => {
 
@@ -18,7 +21,23 @@ const PopModal = ({ closeModal, inputModal, newEntry }) => {
     };
 
     const returnEntry = () => {
-        newEntry(inputs)
+
+        let isValid = true
+
+        validations.forEach(element => {
+            if (element in inputs) {
+                if (isNaN(inputs[element])) {
+                    isValid = false
+                    alert("Please enter a valid number for " + element)
+                    return
+                }
+            }
+        })
+
+        if (isValid)
+            newEntry(inputs)
+
+        return
 
     }
 

@@ -6,11 +6,12 @@ import PopModal from '../../../components/popModal/popModal'
 import TableBody from '../../../components/tableBody/tableBody'
 import { balanceSheetEntryApi, balanceSheetGetApi } from '../../../redux/api/manager'
 import NavBar from '../../../components/navBar/navBar'
+import ProgressReports from '../../../components/ProgressReport/progressReport'
 
 
 const BalanceSheet = () => {
 
-    const data = useSelector(state => state.data);    
+    const data = useSelector(state => state.data);
 
 
     const inputModal = {
@@ -22,6 +23,22 @@ const BalanceSheet = () => {
         'totalSalary': " Total Salary",
         'review': "Review"
     }
+
+    const tableHeaders = {
+        'date': "Date",
+        'employeeName': "Employee Name",
+        'designation': "Designation",
+        'employeeEmail': "Employee Email",
+        'salary': "Salary",
+        'incentive': "Incentive",
+        'totalSalary': " Total Salary",
+        'review': "Review"
+    }
+
+    const validations = ["salary", "incentive", "totalSalary"]
+
+    const xAxis='date'
+    const yAxis ='salary'
 
     const sideBarMenu = {
         '/acountRecords': "Account Records",
@@ -54,8 +71,8 @@ const BalanceSheet = () => {
     return (
         <>
             <div className='dashboardContainer'>
-            <div className='dashboardContainerTop'>
-                <NavBar/>
+                <div className='dashboardContainerTop'>
+                    <NavBar />
 
                 </div>
                 <div className='dashboardContainerBottom'>
@@ -63,12 +80,12 @@ const BalanceSheet = () => {
                         <SideBar sideBarMenu={sideBarMenu} openModalCallBack={openModalCallBack} />
                     </div>
 
-                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} />}
+                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} validations={validations} />}
                     <div className='dashboardContainerBottomRight'>
 
+                        {data && <ProgressReports data={data} xAxis={xAxis} yAxis={yAxis} />}
 
-
-                        <TableBody tableHeaders={inputModal} data={data} />
+                        <TableBody tableHeaders={tableHeaders} data={data} />
 
                     </div>
                 </div>

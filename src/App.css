@@ -41,6 +41,8 @@
       min-width: calc(100% - 200px);
       max-width: calc(100% - 150px);
       display: flex;
+    flex-direction: column;
+
       justify-content: center;
 
       @media (max-width:200px) {}

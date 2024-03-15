@@ -7,6 +7,7 @@ import TableBody from '../../../components/tableBody/tableBody'
 import { firstDepositeEntryApi, firstDepositeGetApi } from '../../../redux/api/agent'
 import NavBar from '../../../components/navBar/navBar'
 import CircleIcon from '@mui/icons-material/Circle';
+import ProgressReports from '../../../components/ProgressReport/progressReport'
 
 const FirstDepositeEntry = () => {
 
@@ -15,13 +16,16 @@ const FirstDepositeEntry = () => {
 
     const inputModal = {
         'agentName': "Agent Name",
-      
+
         'customerName': "Customer Name/ FB ID",
         'gameName': "Game Name",
         'amountOfCoin': "Amount of Coins",
         'accountName': " Account Name",
         'remark': "Remark"
     }
+
+    const validations = ["amountOfCoin"]
+
 
     const tableModal = {
         'agentName': "Agent Name",
@@ -33,7 +37,8 @@ const FirstDepositeEntry = () => {
         'remark': "Remark"
     }
 
-
+    const xAxis = 'date'
+    const yAxis = ["amountOfCoin"]
 
     const sideBarMenu = {
         '/firstDepositeEntry': "First Deposite Entry",
@@ -65,8 +70,9 @@ const FirstDepositeEntry = () => {
     return (
         <>
             <div className='dashboardContainer'>
-            <div className='dashboardContainerTop'>
-                <NavBar/>
+
+                <div className='dashboardContainerTop'>
+                    <NavBar />
 
                 </div>
                 <div className='dashboardContainerBottom'>
@@ -74,10 +80,10 @@ const FirstDepositeEntry = () => {
                         <SideBar sideBarMenu={sideBarMenu} openModalCallBack={openModalCallBack} />
                     </div>
 
-                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} />}
+                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} validations={validations} />}
                     <div className='dashboardContainerBottomRight'>
 
-
+                        {data && <ProgressReports data={data} xAxis={xAxis} yAxis={yAxis} />}
                         <TableBody tableHeaders={tableModal} data={data} />
 
                     </div>

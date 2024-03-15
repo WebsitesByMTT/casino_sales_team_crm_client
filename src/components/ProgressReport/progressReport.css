@@ -1,0 +1,17 @@
+.projectContainerGraph {
+    display: flex;
+    flex-direction: column;
+
+    .header {
+        border: 2px;
+        padding: 10px;
+    }
+
+    .graph{
+
+        height: 70%;
+        width: 100%;
+
+    }
+}
+

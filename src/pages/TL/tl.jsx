@@ -6,6 +6,7 @@ import PopModal from '../../components/popModal/popModal'
 import { addTlEntry, getTlEntries } from '../../redux/api/tl'
 import TableBody from '../../components/tableBody/tableBody'
 import NavBar from '../../components/navBar/navBar'
+import ProgressReports from '../../components/ProgressReport/progressReport'
 
 
 const TlDashboard = () => {
@@ -14,13 +15,15 @@ const TlDashboard = () => {
 
 
     const inputModal = {
-        
+
         'customerName': "Customer Name",
         'gameName': "Game Name",
         'amount': "Amount",
         'accountName': "Account Name",
         'remark': "Remarks"
     }
+
+    const validations = ["amount"]
 
 
     const tableModal = {
@@ -32,6 +35,9 @@ const TlDashboard = () => {
         'accountName': "Account Name",
         'remark': "Remarks"
     }
+
+    const xAxis = "date"
+    const yAxis = ['amount']
 
     const sideBarMenu = {
 
@@ -61,8 +67,11 @@ const TlDashboard = () => {
     return (
         <>
             <div className='dashboardContainer'>
-            <div className='dashboardContainerTop'>
-                <NavBar/>
+
+
+
+                <div className='dashboardContainerTop'>
+                    <NavBar />
 
                 </div>
                 <div className='dashboardContainerBottom'>
@@ -70,8 +79,9 @@ const TlDashboard = () => {
                         <SideBar sideBarMenu={sideBarMenu} openModalCallBack={openModalCallBack} />
                     </div>
 
-                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} />}
+                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} validations={validations} />}
                     <div className='dashboardContainerBottomRight'>
+                        {data && <ProgressReports data={data} xAxis={xAxis} yAxis={yAxis} />}
 
 
                         <TableBody tableHeaders={tableModal} data={data} />

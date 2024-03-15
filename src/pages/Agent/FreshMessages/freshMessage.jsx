@@ -39,6 +39,7 @@ const FreshMessage = () => {
         '/freeToPlay': "Free To Play"
 
     }
+    const validations=[]
 
     console.log("daata", data)
     const dispatch = useDispatch()
@@ -74,11 +75,11 @@ const FreshMessage = () => {
                         <SideBar sideBarMenu={sideBarMenu} openModalCallBack={openModalCallBack} />
                     </div>
 
-                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} />}
+                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal}  validations={validations} />}
                     <div className='dashboardContainerBottomRight'>
 
 
-                        <TableBody tableHeaders={tableModal} data={data} />
+                        <TableBody tableHeaders={tableModal} data={data}  validations={validations}/>
 
                     </div>
                 </div>

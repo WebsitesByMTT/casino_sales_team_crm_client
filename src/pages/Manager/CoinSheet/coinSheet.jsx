@@ -7,6 +7,7 @@ import TableBody from '../../../components/tableBody/tableBody'
 import { coinSheetEntryApi, coinSheetGetAPi } from '../../../redux/api/manager'
 import BigBoss from '../../../components/navBar/navBar'
 import NavBar from '../../../components/navBar/navBar'
+import ProgressReports from '../../../components/ProgressReport/progressReport'
 
 
 const CoinSheet = () => {
@@ -21,6 +22,19 @@ const CoinSheet = () => {
         'incentive': "Incentive",
     }
 
+    const tableHeaders = {
+        'date': "Date",
+        'initialCoin': "Initial Coins",
+        'spend': "Spend",
+        'remaining': "Remaining",
+        'incentive': "Incentive",
+    }
+
+    const validations = ["initialCoin", "spend", "remaining", "incentive"]
+
+    const xAxis = 'date'
+    const yAxis = ["initialCoin"]
+    
     const sideBarMenu = {
         '/acountRecords': "Account Records",
         '/balanceSheet': "Balance Sheet",
@@ -53,8 +67,8 @@ const CoinSheet = () => {
     return (
         <>
             <div className='dashboardContainer'>
-            <div className='dashboardContainerTop'>
-                <NavBar/>
+                <div className='dashboardContainerTop'>
+                    <NavBar />
 
                 </div>
                 <div className='dashboardContainerBottom'>
@@ -63,11 +77,11 @@ const CoinSheet = () => {
                     </div>
                     {/* <div onClick={() => setIsOpen(true)}>New Entry</div> */}
 
-                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} />}
+                    {isOpen && <PopModal newEntry={newEntry} inputModal={inputModal} closeModal={closeModal} validations={validations} />}
                     <div className='dashboardContainerBottomRight'>
 
-
-                        <TableBody tableHeaders={inputModal} data={data} />
+                        {data && <ProgressReports data={data} xAxis={xAxis} yAxis={yAxis} />}
+                        <TableBody tableHeaders={tableHeaders} data={data} />
 
                     </div>
                 </div>
